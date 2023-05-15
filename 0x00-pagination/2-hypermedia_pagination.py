@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""  a get_hyper method that takes the same arguments (and defaults) as get_page  """
-
+"""
+a get_hyper method that takes the same arguments (and defaults) as get_page
+"""
 import csv
 import math
 from typing import List
