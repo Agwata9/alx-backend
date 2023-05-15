@@ -1,15 +1,15 @@
 #!/usri/bin/env python3
 """
-a function named index_range that takes two integer arguments
+0-simple_helper_function
 """
 from typing import Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
-    index range function
+    a  function that returns tuple of start and end page
     """
     final_size: int = page * page_size
     start_size: int = final_size - page_size
-
-    return (start_size, final_size)
+    the_range = (start_size, final_size)
+    return the_range
