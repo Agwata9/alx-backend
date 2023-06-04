@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Last-In First-Out caching module.
+"""
+a class LIFOCache that inherits from BaseCaching and is a caching system:
 """
 
 from base_caching import BaseCaching
@@ -32,6 +33,7 @@ class LIFOCache(BaseCaching):
         self.cache_data.move_to_end(key, last=True)
 
     def get(self, key):
-        """Retrieves item by key.
+        """
+        Retrieves an item by key.
         """
         return self.cache_data.get(key, None)
