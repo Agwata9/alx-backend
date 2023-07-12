@@ -1,39 +1,27 @@
-#!/usr/bin/env python3
-"""
-a class LIFOCache that inherits from BaseCaching and is a caching system:
-"""
-
+#!/usr/bin/python3
+""" LIFO Caching """
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """
-    Represents an object that allows storing and
-    retrieving items from a dictionary with a LIFO
-    removal mechanism when the limit is reached.
-    """
+    """ Class that inherits from BaseCaching and is a caching system """
     def __init__(self):
-        """
-        Initializes the cache.
-        """
         super().__init__()
-        self.cache_data = OrderedDict()
+        self.last_key = ''
 
     def put(self, key, item):
-        """
-        Adds an item in the cache.
-        """
-        if key is None or item is None:
-            return
-        if key not in self.cache_data:
-            if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
-                last_key, _ = self.cache_data.popitem(True)
-                print("DISCARD:", last_key)
-        self.cache_data[key] = item
-        self.cache_data.move_to_end(key, last=True)
+        """ Assign to the dictionary, LIFO algorithm, add element """
+        if key and item:
+            self.cache_data[key] = item
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                print("DISCARD: {}".format(self.last_key))
+                self.cache_data.pop(self.last_key)
+            self.last_key = key
 
     def get(self, key):
-        """
-        Retrieves an item by key.
-        """
-        return self.cache_data.get(key, None)
+        """ Return the value linked """
+        if key is None or self.cache_data.get(key) is None:
+            return None
+        if key in self.cache_data:
+            value = self.cache_data[key]
+            return value
